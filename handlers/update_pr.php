@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'db.php';
 
 
@@ -28,9 +29,11 @@ for ($i = 0; $i < count($id); $i++) {
           WHERE id = $id[$i]";
 
   if (mysqli_query($conn, $sql)) {
-    echo "Record updated successfully";
+    $_SESSION['success'] = "Success!";
+    header('Location: ../purchase_request.php?pr_no='.$pr_no);
   } else {
-    echo "Error updating record: " . mysqli_error($conn);
+    $_SESSION['success'] = "Error updating!";
+    header('Location: ../update_purchase_request.php?pr_no='.$pr_no);
   }
 }
 exit;

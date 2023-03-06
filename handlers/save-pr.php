@@ -31,9 +31,10 @@ for ($i = 0; $i < count($stock_no); $i++) {
 }
 
 if ($result) {
-    echo "Data saved successfully.";
+    $_SESSION['success'] = "Success!";
+    header('Location: ../index.php');
 } else {
-    echo "Error: " . mysqli_error($conn);
+    $_SESSION['error'] = "Error saving purchase request!";
 }
 
 mysqli_close($conn);

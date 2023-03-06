@@ -56,6 +56,12 @@
                         <?php include 'partials/navbar.php' ?>
 
                         <div class="card col-12 mx-auto mt-3">
+                            <?php
+                            session_start();
+                            if (isset($_SESSION['success'])) {
+                                echo "Success";
+                            }
+                            ?>
                             <div class="card-header mt-3 bg-dark text-white">
                                 <b>PURCHASE REPORT NO. <?php echo  $pr_no; ?></b>
                             </div>
