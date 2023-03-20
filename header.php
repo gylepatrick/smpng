@@ -20,13 +20,21 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+<?php
+session_start();
+if (!isset($_SESSION['logged_in'])) {
+    header('Location: index.php');
+    exit;
+  }
+
+?>
 
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
 
-       <?php include('navbar.php') ?>
+        <?php include('navbar.php') ?>
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -34,4 +42,4 @@
             <!-- Main Content -->
             <div id="content">
 
-            <?php include('topbar.php') ?>
+                <?php include('topbar.php') ?>

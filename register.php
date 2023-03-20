@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Register</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -19,6 +19,12 @@
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
+
+<style>
+    .bg-login-image {
+        background: url(img/bg-2.png);
+    }
+</style>
 
 <body class="bg-gradient-success">
 
@@ -32,12 +38,33 @@
                         <!-- Nested Row within Card Body -->
                         <div class="row">
                             <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
-                            <div class="col-lg-6">s
+                            <div class="col-lg-6">
                                 <div class="p-5">
+                                    <div class="text-center mb-3">
+                                        <?php
+                                        session_start();
+                                        
+
+                                        if (isset($_SESSION['success_reg'])) {
+                                            echo '<div class="success-message text-success">' . $_SESSION['success_reg'] . '</div>';
+                                            unset($_SESSION['success_reg']);
+                                        }
+
+                                        if (isset($_SESSION['error_reg_admin'])) {
+                                            echo '<div class="success-message text-danger">' . $_SESSION['error_reg_admin'] . '</div>';
+                                            unset($_SESSION['error_reg_admin']);
+                                        }
+
+                                        if (isset($_SESSION['error_lenght'])) {
+                                            echo '<div class="success-message text-danger">' . $_SESSION['error_lenght'] . '</div>';
+                                            unset($_SESSION['error_lenght']);
+                                        }
+                                        ?>
+                                    </div>
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">Welcome New User! <br> <sub class="text-success">Create your account ...</sub></h1>
                                     </div>
-                                    <form action="handlers/login.php" method="post">
+                                    <form action="handlers/register.php" method="post">
                                         <div class="form-group">
                                             <label for="validationServer01">Fullname</label>
                                             <input type="text" class="form-control form-control-user" id="fullname" aria-describedby="emailHelp" placeholder="Enter Fullname..." name="fullname">
@@ -45,6 +72,12 @@
                                         <div class="form-group">
                                             <label for="validationServer01">Username</label>
                                             <input type="text" class="form-control form-control-user" id="username" aria-describedby="emailHelp" placeholder="Enter Username..." name="username">
+                                            <?php 
+                                                if (isset($_SESSION['error_reg1'])) {
+                                                    echo '<div class="error-message text-sm text-danger">' . $_SESSION['error_reg1'] . '</div>';
+                                                    unset($_SESSION['error_reg1']);
+                                                }
+                                            ?>
                                         </div>
                                         <div class="form-group">
                                             <label for="validationServer01">Password</label>
@@ -52,7 +85,13 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="validationServer01">Confirm Password</label>
-                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirm Password ..." name="password">
+                                            <input type="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Confirm Password ..." name="confirm_password">
+                                            <?php 
+                                                if (isset($_SESSION['error_reg2'])) {
+                                                    echo '<div class="error-message text-sm text-danger">' . $_SESSION['error_reg2'] . '</div>';
+                                                    unset($_SESSION['error_reg2']);
+                                                }
+                                            ?>
                                         </div>
 
                                         <div class="form-group">

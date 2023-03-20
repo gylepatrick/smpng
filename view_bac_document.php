@@ -1,11 +1,6 @@
 <?php include('header.php') ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Purchase Request</h1>
-    </div>
     <!-- Content Row -->
     <div class="row">
         <!-- Area Chart -->
@@ -100,7 +95,7 @@ if ($result) {
         // If the number is greater than or equal to 1000000, convert the millions digit to words and recursively call the function for the remaining digits
         return number_to_words(floor($number / 1000000)) . ' Million ' . number_to_words($number % 1000000);
     }
-    $total_words = number_to_words($total);
+        $total_words = number_to_words($total);
 
     ?>
 
@@ -153,7 +148,7 @@ if ($result) {
     <!-- NAVBAR -->
 
     <div class="card col-md-12 mx-auto mt-3 mb-3">
-        <div class="card-header m-0 text-white bg-dark mt-3">
+        <div class="card-header m-0 text-white bg-success mt-3">
             <b>BAC DOCUMENT</b>
             <button class="btn btn-sm text-white float-right" type="button" id="print-card"><i class="fa fa-print"></i>
                 Print</button>
