@@ -1,38 +1,40 @@
 <?php include('header.php') ?>
-<!-- Begin Page Content -->
+<style>
+    label {
+        font-size: 10px;
+    }
+</style>
+
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Purchase Request</h1>
-    </div>
-    <!-- Content Row -->
     <div class="row">
-        <!-- Area Chart -->
-
-        <?php
-        session_start();
-        if (isset($_SESSION['success'])) {
-            echo "Nice";
-            unset($_SESSION['success_message']);
-        }
-        ?>
         <div class="col-xl-12 col-lg-7">
 
-            <div class="m-3 dropdown">
-                <button class="btn btn-sm btn-outline-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    VIEW PURCHASE REQUESTS
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <?php
+            if (isset($_SESSION['success'])) {
+            ?>
+                <div class="alert alert-success mt-3 alert-dismissible fade show" role="alert">
+                    <strong></strong> <?php echo $_SESSION['success']; ?>
+                    <button type="button" class="btn-close btn-success float-end" data-bs-dismiss="alert" aria-label="Close">x</button>
                 </div>
-            </div>
+            <?php
+                unset($_SESSION['success']);
+            } else if (isset($_SESSION['erro'])) {
+            ?>
+
+                <div class="alert alert-danger mt-3 alert-dismissible fade show" role="alert">
+                    <strong></strong> <?php echo $_SESSION['error']; ?>
+                    <button type="button" class="btn-close btn-danger float-end" data-bs-dismiss="alert" aria-label="Close">x</button>
+                </div>
+
+            <?php
+                unset($_SESSION['error']);
+            }
+            ?>
 
             <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Add New</h6>
+                <div class="card-header bg-success py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-white">Purchase Request Form</h6>
                 </div>
-                <!-- Card Body -->
                 <div class="card-body">
                     <form action="handlers/save-pr.php" method="POST" id="my-form">
                         <div style="display: flex; align-items: center; justify-content: center; flex-direction: column;" class="form-row col-12 text-dark border border-white border-radius align-items-center justify-center">
@@ -84,29 +86,26 @@
                                         </select>
                                     </div>
                                 </div>
-                                <a type="button" class="remove-row ml-3 text-bold text-danger" style="font-weight: bold; font-size: 20px;">x</a>
+                                <a type="button" class="remove-row ml-3 text-bold text-danger" style="font-weight: bold; font-size: 20px;" title="Remove Form">x</a>
                             </div>
                         </div>
 
 
                         <div id="form-rows" class="form-row col-12 text-dark border border-white border-radius align-items-center justify-center" style="display: flex; align-items: center; justify-content: center; flex-direction: column;"></div>
                         <div class="col col-3 mx-auto">
-                            <button type="submit" class=" mt-2 btn btn-sm col-sm-12 mx-auto btn-dark">SAVE REQUEST</button>
+                            <button type="submit" class=" mt-2 btn btn-sm col-12 mx-auto btn-success rounded " title="Save Entries">SAVE</button>
                         </div>
                     </form>
-                    <button type="button" class="text-dark btn text-sm col-1 mb-3 mx-auto float-right" style="font-size: 15px;" id="add-row"><i class="fa fa-plus"></i>New Row</button>
+                    <button type="button" class="text-success btn text-sm col-3 mb-3 mx-auto float-right" title="Add new form row" style="font-size: 15px;" id="add-row"><i class="fa fa-plus"></i>New Row</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<!-- /.container-fluid -->
-
 </div>
-<!-- End of Main Content -->
 
 <!-- Footer -->
-<footer class="sticky-footer bg-white">
+<footer class="sticky-footer bg-success text-white">
     <div class="container my-auto">
         <div class="copyright text-center my-auto">
             <span>Copyright &copy; Project FART 2023</span>

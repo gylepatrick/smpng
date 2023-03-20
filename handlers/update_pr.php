@@ -32,7 +32,7 @@ for ($i = 0; $i < count($id); $i++) {
     $_SESSION['success'] = "Success!";
     header('Location: ../purchase_request.php?pr_no='.$pr_no);
   } else {
-    $_SESSION['success'] = "Error updating!";
+    $_SESSION['error'] = "Error updating!";
     header('Location: ../update_purchase_request.php?pr_no='.$pr_no);
   }
 }

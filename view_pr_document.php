@@ -1,11 +1,14 @@
 <?php include('header.php') ?>
+<style>
+    @media print {
+    .form-row {
+        height: 100%;
+        page-break-after: always;
+    }
+}
+</style>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Purchase Request</h1>
-    </div>
     <!-- Content Row -->
     <div class="row">
         <!-- Area Chart -->
@@ -50,9 +53,9 @@
 
 
                 <div class="card col-12 mx-auto">
-                    <div class="card-header mt-3 bg-dark text-white">
+                    <div class="card-header mt-3 bg-success text-white">
                         <b>PR Document</b>
-                        <button class="btn btn-sm btn-dark float-right" type="button" id="print-card"><i class="fa fa-print"></i>
+                        <button class="btn btn-sm btn-success float-right" type="button" id="print-card"><i class="fa fa-print"></i>
                             Print</button>
                     </div>
                     <div class="card-body border">

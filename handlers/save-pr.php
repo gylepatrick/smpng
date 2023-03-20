@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 
 include 'db.php';
 
@@ -32,7 +32,7 @@ for ($i = 0; $i < count($stock_no); $i++) {
 
 if ($result) {
     $_SESSION['success'] = "Success!";
-    header('Location: ../index.php');
+    header('Location: ../home.php');
 } else {
     $_SESSION['error'] = "Error saving purchase request!";
 }

@@ -1,11 +1,6 @@
 <?php include('header.php') ?>
 <!-- Begin Page Content -->
 <div class="container-fluid">
-
-    <!-- Page Heading -->
-    <div class="d-sm-flex justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Purchase Request</h1>
-    </div>
     <!-- Content Row -->
     <div class="row">
         <!-- Area Chart -->
@@ -29,18 +24,17 @@
                 input {
                     color: #000;
                 }
-            </style>
-            <div class="card col-12 mx-auto mt-3">
-                <?php
-                session_start();
-                if (isset($_SESSION['error'])) {
-                    echo $_SESSION['error'];
+                th {
+                    color: green;
                 }
-                ?>
-                <div class="card-header mt-3 bg-dark text-white">
+            </style>
+
+            <div class="card col-12 mx-auto mt-1">
+                <div class="card-header mt-3 bg-success text-white">
                     <b>UPDATE</b>
                 </div>
                 <div class="card-body mb-3 border col-12 mx-auto">
+                    <p class="">✖<b>Note: </b> Only Type and Availability are changeable.</p>
                     <form class="col-12 mx-auto" method="post" action="handlers/update_pr.php">
                         <input type="hidden" name="pr_no" value="<?php echo $pr_no; ?>">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -82,14 +76,14 @@
                                         <td><input class="med-w form-control" type='text' name='total_cost[]' value='<?php echo $total_cost ?>'></td>
                                         <td>
                                             <select class='form-select form-control' name='type[]'>
-                                            <?php
+                                                <?php
                                                 if ($row['type'] == 1) {
                                                 ?>
-                                                    <option class="selected" value="1">Old-Office Supplies</option>
+                                                    <option class="selected" value="1">Office Supplies</option>
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <option class="selected" value="2">Old-Non-office Supplies</option>
+                                                    <option class="selected" value="2">Non-office Supplies</option>
                                                 <?php
                                                 }
                                                 ?>
@@ -106,7 +100,7 @@
                                                 <?php
                                                 } else {
                                                 ?>
-                                                    <option class="selected" value="1">Old-Not Available</option>
+                                                    <option class="selected" value="2">Not Available</option>
                                                 <?php
                                                 }
                                                 ?>
@@ -120,7 +114,7 @@
                             }
                             ?>
                         </table>
-                        <button class="btn btn-success" type="submit">Update</button>
+                        <button class="btn btn-success mx-auto col-6 float-right mt-2" type="submit">Update</button>
                     </form>
 
                 </div>
